@@ -99,8 +99,8 @@ def register():
         user = User(username=form.username.data, email=form.email.data, password=hashed_pw, confirmed=True)
         db.session.add(user)
         db.session.commit()
-        flash("Registration successful.", "success")
-        return redirect(url_for("tasks"))
+        flash("Registration successful! You can now log in.", "success")
+        return redirect(url_for("login"))
 
     return render_template("register.html", form=form)
 
