@@ -1,56 +1,47 @@
-{% extends "layout.html" %}
+{% extends "base.html" %}
 {% block content %}
-<div class="container py-5">
-    <div class="row align-items-center justify-content-center">
-        <!-- Left section: About App -->
-        <div class="col-md-6 mb-4 mb-md-0">
-            <h2 class="fw-bold text-primary mb-3">Welcome to Task Manager</h2>
-            <p class="text-muted">
-                Stay organized, productive, and focused with your personal Task Manager.  
-                Easily create, track, and complete your tasks while keeping notes and deadlines in one place.  
-                Manage everything efficiently — from daily goals to long-term projects — all in your dashboard.
-            </p>
-            <ul class="list-unstyled text-muted">
-                <li>✅ Create, edit, and delete tasks</li>
-                <li>📅 Track progress and deadlines</li>
-                <li>📝 Save notes and PDFs securely</li>
-                <li>🔒 OTP-based login for extra security</li>
-            </ul>
-        </div>
 
-        <!-- Right section: Login Form -->
-        <div class="col-md-5">
-            <div class="card shadow-lg border-0 rounded-4">
-                <div class="card-body p-4">
-                    <h4 class="text-center mb-4">Login to Continue</h4>
-                    <form method="POST" action="">
-                        {{ form.hidden_tag() }}
-                        <div class="mb-3">
-                            {{ form.email.label(class="form-label") }}
-                            {{ form.email(class="form-control", placeholder="Enter your email") }}
-                        </div>
-                        <div class="mb-3">
-                            {{ form.password.label(class="form-label") }}
-                            {{ form.password(class="form-control", placeholder="Enter your password") }}
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <div class="form-check">
-                                {{ form.remember(class="form-check-input") }}
-                                {{ form.remember.label(class="form-check-label") }}
-                            </div>
-                            <a href="{{ url_for('forgot_password') }}" class="text-decoration-none small">Forgot Password?</a>
-                        </div>
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-primary rounded-3">Login</button>
-                        </div>
-                    </form>
-                    <p class="text-center mt-3 mb-0">
-                        Don't have an account?
-                        <a href="{{ url_for('register') }}" class="text-decoration-none fw-semibold">Register here</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+<!--intro-->
+<div class="col-md-6 mb-4 mb-md-0">
+  <h2 class="text-primary fw-bold">Welcome to Task Manager</h2>
+  <p class="mt-3">
+      Manage your daily tasks efficiently with our smart Task Manager.
+      Add, edit, and track your tasks from anywhere — securely and easily.
+  </p>
+  <ul>
+      <li>✅ Secure login for your data</li>
+      <li>📋 Create, update, and delete tasks</li>
+      <li>📊 Track progress in real-time</li>
+  </ul>
+  <p class="text-muted small mt-4">
+      Built with Flask • MySQL/PostgreSQL • Bootstrap
+  </p>
+</div>
+      
+<div class="centered">
+  <div class="card p-4" style="width: 400px;">
+    <h3 class="text-center mb-3">Welcome Back</h3>
+    <form method="POST">
+      {{ form.hidden_tag() }}
+      <div class="mb-3">
+        {{ form.email.label(class="form-label") }}
+        {{ form.email(class="form-control") }}
+      </div>
+      <div class="mb-3">
+        {{ form.password.label(class="form-label") }}
+        {{ form.password(class="form-control") }}
+      </div>
+      <div class="d-grid">
+        {{ form.submit(class="btn btn-success") }}
+      </div>
+      <div class="mt-2 text-center">
+            <a href="{{ url_for('forgot_password') }}">Forgot Password?</a>
+      </div>
+
+      <p class="text-center mt-3">
+        New user? <a href="{{ url_for('register') }}">Register</a>
+      </p>
+    </form>
+  </div>
 </div>
 {% endblock %}
